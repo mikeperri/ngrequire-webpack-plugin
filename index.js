@@ -35,8 +35,8 @@ function apply(options, compiler) {
             ModuleParserHelpers.addParsedVariable(compiler.parser, '__ngrequire_load__', moduleLoaderStatement);
             var deps = ngrequire.getMissingDependencies(filePath);
             var currentModule = meta.moduleName;
-            var requiredModules = _.unique(_.pluck(deps, 'moduleName'));
-            var relativePaths = _.unique(_.pluck(deps, 'relativePath'));
+            var requiredModules = _.uniq(_.map(deps, 'moduleName'));
+            var relativePaths = _.uniq(_.map(deps, 'relativePath'));
 
             _.each(relativePaths, function (relativePath, index) {
                 var normalizedName = '__ngrequire_module_{0}__'.f(index);
